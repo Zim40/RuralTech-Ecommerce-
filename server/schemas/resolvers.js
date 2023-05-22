@@ -14,7 +14,7 @@ const resolvers = {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError('You need to be logged in!'); 
     },
   },
 
@@ -24,9 +24,13 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    login: async (parent, { email, password }) => {
+    login: async (parent, { email, password }, context) => {
       const user = await User.findOne({ email });
-
+      if(user.role === "ADMIN") {
+        console.log('Welcome Admin');
+      } else {
+      console.log('Welcome User!');
+      }
       if (!user) {
         throw new AuthenticationError('No user found with this email address');
       }
