@@ -1,0 +1,18 @@
+[
+  {
+    "categoryName": "GPU",
+    "description": "GPUs, or Graphics Processing Units, are specialized processors for rendering and displaying graphics. They accelerate image processing, 3D rendering, and complex calculations in graphics-intensive applications."
+  },
+  {
+    "categoryName": "Motherboards",
+    "description": "Motherboards are central circuit boards connecting components. They house CPU, RAM, storage, and expansion cards, enabling communication and compatibility. Essential for data transfer and control, motherboards determine system performance and support."
+  },
+  {
+    "categoryName": "CPU",
+    "description": "CPUs are computer brains. They execute instructions, process data, and control systems. With speed, core count, and architecture, CPUs impact performance and responsiveness. Coordinating with components, they ensure efficient software execution and handle input/output operations."
+  },
+  {
+    "categoryName": "Desktop Cases",
+    "description": "Desktop cases house computer components, providing protection and organization. They come in various sizes and designs, offering space for motherboard, CPU, storage, and expansion cards. "
+  }
+]

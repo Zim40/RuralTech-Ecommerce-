@@ -1,0 +1,11 @@
+[
+  {
+    "productName": "Nvidia 4080",
+    "description": "The 4080 GPU is a high-performance graphics processor. It delivers exceptional visual rendering, smooth gaming, and advanced features. With its powerful architecture and optimized cores, it offers an immersive gaming experience and handles demanding tasks with ease.",
+    "price": 1499.99,
+    "image": "nvidia4080.png",
+    "category": "646af716a8b1e66b88fa8923",
+    "quantity": 5
+  }
+  
+]
