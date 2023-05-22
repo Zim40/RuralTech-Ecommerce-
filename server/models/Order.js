@@ -22,10 +22,12 @@ const orderSchema = new Schema({
     required: true,
   },
 
-  timestamps: {
-    type: String,
-    required: true,
-  },
+ timestamps: {
+  type: String,
+  required: true,
+ },
+
+
 
   formattedTimestamp: {
     type: String,
