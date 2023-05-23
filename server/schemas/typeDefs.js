@@ -17,8 +17,9 @@ const typeDefs = gql`
   }
 
   input CategoryInput {
-    categoryName: String!
-    description: String!
+    _id: ID
+    categoryName: String
+    description: String
     quantity: Int
   }
 
@@ -33,11 +34,12 @@ const typeDefs = gql`
   }
 
   input ProductInput {
-    productName: String!
+    _id: ID
+    productName: String
     description: String
-    price: Float!
+    price: Float
     image: String
-    category: CategoryInput!
+    category: CategoryInput
     quantity: Int
 
 
@@ -61,11 +63,7 @@ const typeDefs = gql`
     user: User
   }
 
-  type Query {
-    users: [User]
-    user(username: String!): User
-    me: User
-  }
+ 
 
   input AddOrderProductInput {
   product: ID!
@@ -78,22 +76,36 @@ const typeDefs = gql`
   formattedTimestamp: String
   }
 
+  type Query {
+    users: [User]
+    user(username: String!): User
+    me: User
+
+    allProducts: [Products]
+    singleProduct(_id: ID!): Products
+    
+    allCategory: [Category]
+    singleCategory(_id: ID!): Category
+
+    
+  }
+
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
 
-    addProduct(productName: String!, description: String!, price: Float!, image: String, category: ID!, quantity: Int!): [Products!]
+    addProduct(productName: String!, description: String!, price: Float, image: String, category: ID!, quantity: Int!): Products
     deleteProduct(_id: ID!): Boolean
-    updateProduct(_id: ID!, input: ProductInput!): Products
+    updateProduct(_id: ID!, input: ProductInput): Products
 
-    addCategory(categoryName: String!, description: String, quantity: Int!): [Category!]!
+    addCategory(categoryName: String!, description: String): [Category!]!
     deleteCategory(_id: ID!): Boolean
     updateCategory(_id: ID!, input: CategoryInput!): Category
 
     addOrder(input: AddOrderInput!): Order!
-    deleteOrder(_id: ID!): Order!
-    updateOrder(_id: ID!, input: AddOrderProductInput!): Order!
+    deleteOrder(_id: ID!): Boolean
+    updateOrder(_id: ID!, products: [AddOrderProductInput!]!): Order!
 
 
 

@@ -17,7 +17,7 @@ db.once('open', async () => {
 
     // await Category.deleteMany({}); --- DO NOT UNCOMMENT!
 
-    // await Category.create(categorySeeds); --- DO NOT UNCOMMENT!
+    // await Category.create(categorySeeds); --- DO NOT UNCOMMENT! 
 
     await Products.deleteMany({});
 

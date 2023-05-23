@@ -1,0 +1,38 @@
+mutation queries {
+
+    add Product: {
+mutation Mutation($productName: String!, $description: String!, $category: ID!, $quantity: Int!, $price: Float, $image: String) {
+  addProduct(productName: $productName, description: $description, category: $category, quantity: $quantity, price: $price, image: $image) {
+    productName
+    description
+    price
+    image
+    category {
+      _id
+    }
+    quantity
+  }
+}
+-------------------------------------
+
+
+
+    }
+}
+
+Queries {
+
+    allCategory: {
+
+        query Query {
+  allCategory {
+    _id
+    categoryName
+    description
+    quantity
+  }
+}
+------------------------------------------
+
+    }
+}
