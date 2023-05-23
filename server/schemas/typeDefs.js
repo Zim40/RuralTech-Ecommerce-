@@ -52,10 +52,9 @@ const typeDefs = gql`
 
   type Order {
     _id: ID
-    products: [OrderProduct!]!
+    products: [OrderProduct]!
     user: ID!
     timestamps: String!
-    formattedTimestamp: String
   }
 
   type Auth {
@@ -67,13 +66,12 @@ const typeDefs = gql`
 
   input AddOrderProductInput {
   product: ID!
-  quantity: Int!
+  quantity: Int
   }
 
   input AddOrderInput {
-  products: [AddOrderProductInput!]!
+  products: [AddOrderProductInput]!
   user: ID!
-  formattedTimestamp: String
   }
 
   type Query {
@@ -99,13 +97,13 @@ const typeDefs = gql`
     deleteProduct(_id: ID!): Boolean
     updateProduct(_id: ID!, input: ProductInput): Products
 
-    addCategory(categoryName: String!, description: String): [Category!]!
+    addCategory(categoryName: String!, description: String): Category!
     deleteCategory(_id: ID!): Boolean
     updateCategory(_id: ID!, input: CategoryInput!): Category
 
     addOrder(input: AddOrderInput!): Order!
     deleteOrder(_id: ID!): Boolean
-    updateOrder(_id: ID!, products: [AddOrderProductInput!]!): Order!
+    updateOrder(_id: ID!, products: [AddOrderProductInput]!): Order!
 
 
 

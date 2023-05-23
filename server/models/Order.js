@@ -1,5 +1,5 @@
-const { Schema, model } = require('mongoose');
-const { formatTimestamp } = require('../utils/dateFormat');
+const { Schema, model } = require("mongoose");
+const dateFormat = require('../utils/dateFormat');
 
 const orderSchema = new Schema({
   // order fields
@@ -22,28 +22,18 @@ const orderSchema = new Schema({
     required: true,
   },
 
- timestamps: {
-  type: String,
-  required: true,
- },
-
-
-
-  formattedTimestamp: {
-    type: String,
+  timestamps: {
+    type: Date,
+    required: true,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp) 
   },
+
+
 });
 
 
-orderSchema.pre('save', function(next) {
-    const formattedTimestamp = formatTimestamp(this.createdAt, {
-        monthLength: 'long',
-        dateSuffix: true,
-    });
-    this.formattedTimestamp = formattedTimestamp;
-    next();
-});
 
-const Order = model('Order', orderSchema);
+const Order = model("Order", orderSchema);
 
 module.exports = Order;

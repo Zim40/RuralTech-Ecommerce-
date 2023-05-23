@@ -126,22 +126,100 @@ const resolvers = {
     addCategory: async (parent, { categoryName, description }) => {
       try {
         let category = await Category.findOne({ categoryName });
-        if(category) {
-          return;
+        if (category) {
+          return {
+            message: "Category already exists with that name.",
+          };
         } else {
-         category = await Category.create({
+          category = await Category.create({
             categoryName,
             description,
-            quantity,
           });
           await category.save();
           return category;
         }
       } catch (error) {
-        
-        throw new Error('Error adding category.');
+        throw new Error("Error adding Category.");
       }
-    }
+    },
+    deleteCategory: async (parent, { _id }) => {
+      try {
+        // Code here -----------------------------
+        const deletedCategory = await Category.findByIdAndDelete(_id, {
+          new: true,
+        });
+
+        if (!deletedCategory) {
+          return;
+        } else {
+          return true;
+        }
+      } catch (error) {
+        throw new Error("Error deleting Category.");
+      }
+    },
+    updateCategory: async (parent, { _id, input }) => {
+      try {
+        // Code here -----------------------------
+        const updatedCategory = await Category.findByIdAndUpdate(
+          _id,
+          input,
+          { new: true },
+          { runValidators: true }
+        );
+        if (updatedCategory) {
+          updatedCategory.save();
+          return updatedCategory;
+        } else {
+          throw new Error("Error updating Category.");
+        }
+      } catch (error) {
+        throw new Error("Error updating Category.");
+      }
+    },
+
+    addOrder: async (
+      parent,
+      { input: { products, user}, },
+      context
+    ) => {
+      try {
+        console.log(user);
+        console.log(products);
+        const newOrder = await Order.create({
+          products,
+          user,
+        });
+        console.log(newOrder);
+        return newOrder;
+      } catch (error) {
+        console.log(error);
+        throw new Error("Error adding Order.");
+      }
+    },
+
+    deleteOrder: async (parent, { _id }) => {
+      try {
+        // Code here -----------------------------
+        const deletedOrder = await Order.findByIdAndDelete( _id, {
+          new: true,
+        });
+        if (!deletedOrder) {
+          throw new Error("Could not find that order");
+        } else {
+          return true;
+        }
+      } catch (error) {
+        throw new Error("Error deleting Order.");
+      }
+    },
+    updateOrder: async (parent, { _id, products }) => {
+      try {
+        // Code here -----------------------------
+      } catch (error) {
+        throw new Error("Error updating Order");
+      }
+    },
   },
 };
 
