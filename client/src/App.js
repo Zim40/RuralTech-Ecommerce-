@@ -14,6 +14,8 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import AdminDash from './pages/AdminDash';
+import Manager from './pages/Manager';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -66,6 +68,14 @@ function App() {
               <Route 
                 path="/profiles/:username"
                 element={<Profile />}
+              />
+              <Route
+                path="/admin-dashboard"
+                element={<AdminDash />}  
+              />
+              <Route
+                path="/product-category-manager"
+                element={<Manager />}
               />
             </Routes>
           </div>

@@ -5,6 +5,7 @@ const Home = () => {
   return (
     <main>
       Home Page
+      {/* Main Shopping Website Home - NOT ADMIN HOME */}
     </main>
   );
 };

@@ -1,13 +1,11 @@
 import React from "react";
 
-
-const WrongPage = () => {
-
+const Manager = () => {
     return (
         <main>
-            Wrong page!
+            Manager
         </main>
     );
 };
 
-export default WrongPage;
+export default Manager;
