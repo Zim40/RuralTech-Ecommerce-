@@ -33,6 +33,12 @@ const resolvers = {
     singleCategory: async (parent, { _id }) => {
       return Category.findById({ _id });
     },
+    allOrders: async () => {
+      return Order.find();
+    },
+    singleOrder: async (parent, { _id }) => {
+      return Order.findById({ _id });
+    }
   },
 
   Mutation: {
@@ -201,9 +207,10 @@ const resolvers = {
     deleteOrder: async (parent, { _id }) => {
       try {
         // Code here -----------------------------
-        const deletedOrder = await Order.findByIdAndDelete( _id, {
-          new: true,
-        });
+        const deletedOrder = await Order.findByIdAndDelete( _id,
+          { new: true },
+          { runValidators: true},
+        );
         if (!deletedOrder) {
           throw new Error("Could not find that order");
         } else {
@@ -212,14 +219,25 @@ const resolvers = {
       } catch (error) {
         throw new Error("Error deleting Order.");
       }
-    },
-    updateOrder: async (parent, { _id, products }) => {
+    }, 
+    updateOrder: async (parent, { _id, input }) => {
       try {
         // Code here -----------------------------
+        const updatedOrder = await Order.findByIdAndUpdate(
+          _id,
+          input,
+          { new: true },
+          {runValidators: true},
+        );
+        if(!updatedOrder) {
+          console.log(error)
+          throw new Error('Error updating order.');
+        }
       } catch (error) {
+        console.error(error)
         throw new Error("Error updating Order");
       }
-    },
+    }, // INCOMPLETE CODE ------------------------
   },
 };
 

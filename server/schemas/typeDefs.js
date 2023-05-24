@@ -85,6 +85,9 @@ const typeDefs = gql`
     allCategory: [Category]
     singleCategory(_id: ID!): Category
 
+    allOrders: [Order]
+    singleOrder(_id: ID!): Order
+
     
   }
 
@@ -103,7 +106,7 @@ const typeDefs = gql`
 
     addOrder(input: AddOrderInput!): Order!
     deleteOrder(_id: ID!): Boolean
-    updateOrder(_id: ID!, products: [AddOrderProductInput]!): Order!
+    updateOrder(_id: ID!, input: AddOrderInput!): Order!
 
 
 
