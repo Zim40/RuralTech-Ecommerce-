@@ -22,7 +22,12 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     allProducts: async () => {
-      return Products.find();
+      const products = await Products.find();
+      if(!products) {
+        console.log(error);
+      } else {
+      return products;
+      }
     },
     singleProduct: async (parent, { _id }) => {
       return Products.findOne({ _id });
@@ -38,7 +43,7 @@ const resolvers = {
     },
     singleOrder: async (parent, { _id }) => {
       return Order.findById({ _id });
-    }
+    },
   },
 
   Mutation: {
@@ -220,24 +225,24 @@ const resolvers = {
         throw new Error("Error deleting Order.");
       }
     }, 
-    updateOrder: async (parent, { _id, input }) => {
-      try {
-        // Code here -----------------------------
-        const updatedOrder = await Order.findByIdAndUpdate(
-          _id,
-          input,
-          { new: true },
-          {runValidators: true},
-        );
-        if(!updatedOrder) {
-          console.log(error)
-          throw new Error('Error updating order.');
-        }
-      } catch (error) {
-        console.error(error)
-        throw new Error("Error updating Order");
-      }
-    }, // INCOMPLETE CODE ------------------------
+    // updateOrder: async (parent, { _id, input }) => {
+    //   try {
+        
+    //     const updatedOrder = await Order.findByIdAndUpdate(
+    //       _id,
+    //       input,
+    //       { new: true },
+    //       {runValidators: true},
+    //     );
+    //     if(!updatedOrder) {
+    //       console.log(error)
+    //       throw new Error('Error updating order.');
+    //     }
+    //   } catch (error) {
+    //     console.error(error)
+    //     throw new Error("Error updating Order");
+    //   }
+    // }, 
   },
 };
 
