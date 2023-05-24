@@ -62,6 +62,11 @@ const typeDefs = gql`
     user: User
   }
 
+  type ProductInfo {
+    count: Int
+    totalQuantity: Int
+  }
+
  
 
   input AddOrderProductInput {
@@ -81,6 +86,7 @@ const typeDefs = gql`
 
     allProducts: [Products]
     singleProduct(_id: ID!): Products
+    productInfo: ProductInfo
     
     allCategory: [Category]
     singleCategory(_id: ID!): Category

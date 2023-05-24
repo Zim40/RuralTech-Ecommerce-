@@ -22,6 +22,17 @@ export const QUERY_ME = gql`
   }
 `;
 
+export const PRODUCT_INFO = gql`
+query Query {
+  productInfo {
+    count
+    totalQuantity
+  }
+}
+`;
+
+
+
 export const QUERY_ALLPRODUCTS = gql`
 query Query {
   allProducts {

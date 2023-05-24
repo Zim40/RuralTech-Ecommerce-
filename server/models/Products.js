@@ -35,6 +35,23 @@ const productSchema = new Schema({
   },
 });
 
+productSchema.statics.getProductCount = function() {
+  return this.countDocuments({});
+};
+
+productSchema.statics.getTotalQuantity = function () {
+  return this.aggregate([
+    {
+      $group: {
+        _id: null,
+        total: {
+          $sum: '$quantity'
+        }
+      }
+    }
+  ]);
+}
+
 // For every product added to a Category this performs calculation on how many products in the specific category.
 productSchema.post('save', async function () {
   try {

@@ -32,6 +32,20 @@ const resolvers = {
     singleProduct: async (parent, { _id }) => {
       return Products.findOne({ _id });
     },
+    productInfo: async () => {
+      try {
+        const count = await Products.getProductCount();
+        const totalQuantityResult = await Products.getTotalQuantity();
+        const totalQuantity = totalQuantityResult.length > 0 ? totalQuantityResult[0].total : 0;
+        return {
+          count: count,
+          totalQuantity: totalQuantity,
+        }
+      } catch (error) {
+        console.log(error);
+        throw new Error('Error calculating total stock.')
+      }
+    },
     allCategory: async () => {
       return Category.find();
     },
