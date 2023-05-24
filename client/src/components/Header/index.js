@@ -9,7 +9,7 @@ import Auth from '../../utils/auth';
 
 const Header = () => {
   const userRole = Auth.loggedIn() ? Auth.getProfile().data.role : null;
-  console.log(userRole)
+console.log(userRole)
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
@@ -25,6 +25,7 @@ const Header = () => {
         <Nav className="me-auto">
           <Nav.Link as={Link} to="/">Home</Nav.Link>
         </Nav>
+        {/* Conditionally render "Admin" or "User" navbars */}
         {userRole === "ADMIN" && (
         <>
         <Nav className="me-auto">
