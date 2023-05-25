@@ -22,14 +22,18 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const PRODUCT_INFO = gql`
-query Query {
-  productInfo {
-    count
-    totalQuantity
+export const STAT_INFO = gql`
+query StatInfo {
+  statInfo {
+    productCount
+    totalProductQuantity
+    orderCount
+    totalOrderQuantity
   }
 }
 `;
+
+
 
 
 

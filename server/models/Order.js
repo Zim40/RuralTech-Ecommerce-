@@ -29,8 +29,29 @@ const orderSchema = new Schema({
     get: (timestamp) => dateFormat(timestamp) 
   },
 
+  quantity: {
+    type: Number
+  },
+
 
 });
+
+orderSchema.statics.getOrderCount = function () {
+  return this.countDocuments({});
+}
+
+orderSchema.statics.getTotalOrderQuantity = function () {
+  return this.aggregate([
+    {
+      $group: {
+        _id: null,
+        total: {
+          $sum: '$quantity'
+        }
+      }
+    }
+  ]);
+}
 
 
 

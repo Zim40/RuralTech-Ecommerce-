@@ -1,11 +1,6 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { 
-  User,
-  Category,
-  Order,
-  Products
- } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { User, Category, Order, Products } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -23,28 +18,14 @@ const resolvers = {
     },
     allProducts: async () => {
       const products = await Products.find();
-      if(!products) {
+      if (!products) {
         console.log(error);
       } else {
-      return products;
+        return products;
       }
     },
     singleProduct: async (parent, { _id }) => {
       return Products.findOne({ _id });
-    },
-    productInfo: async () => {
-      try {
-        const count = await Products.getProductCount();
-        const totalQuantityResult = await Products.getTotalQuantity();
-        const totalQuantity = totalQuantityResult.length > 0 ? totalQuantityResult[0].total : 0;
-        return {
-          count: count,
-          totalQuantity: totalQuantity,
-        }
-      } catch (error) {
-        console.log(error);
-        throw new Error('Error calculating total stock.')
-      }
     },
     allCategory: async () => {
       return Category.find();
@@ -57,6 +38,33 @@ const resolvers = {
     },
     singleOrder: async (parent, { _id }) => {
       return Order.findById({ _id });
+    },
+    statInfo: async () => {
+      try {
+        const orderCount = await Order.getOrderCount();
+        const totalOrderQuantityResult = await Order.getTotalOrderQuantity();
+        const totalOrderQuantity =
+          totalOrderQuantityResult.length > 0
+            ? totalOrderQuantityResult[0].total
+            : 0;
+
+        const productCount = await Products.getProductCount();
+        const totalProductQuantityResult = await Products.getTotalQuantity();
+        const totalProductQuantity =
+          totalProductQuantityResult.length > 0
+            ? totalProductQuantityResult[0].total
+            : 0;
+
+        return {
+          orderCount: orderCount,
+          totalOrderQuantity: totalOrderQuantity,
+          productCount: productCount,
+          totalProductQuantity: totalProductQuantity,
+        };
+      } catch (error) {
+        console.log(error);
+        throw new Error("Error calculating order quantities.");
+      }
     },
   },
 
@@ -203,11 +211,7 @@ const resolvers = {
       }
     },
 
-    addOrder: async (
-      parent,
-      { input: { products, user}, },
-      context
-    ) => {
+    addOrder: async (parent, { input: { products, user } }, context) => {
       try {
         console.log(user);
         console.log(products);
@@ -226,9 +230,10 @@ const resolvers = {
     deleteOrder: async (parent, { _id }) => {
       try {
         // Code here -----------------------------
-        const deletedOrder = await Order.findByIdAndDelete( _id,
+        const deletedOrder = await Order.findByIdAndDelete(
+          _id,
           { new: true },
-          { runValidators: true},
+          { runValidators: true }
         );
         if (!deletedOrder) {
           throw new Error("Could not find that order");
@@ -238,10 +243,10 @@ const resolvers = {
       } catch (error) {
         throw new Error("Error deleting Order.");
       }
-    }, 
+    },
     // updateOrder: async (parent, { _id, input }) => {
     //   try {
-        
+
     //     const updatedOrder = await Order.findByIdAndUpdate(
     //       _id,
     //       input,
@@ -256,7 +261,7 @@ const resolvers = {
     //     console.error(error)
     //     throw new Error("Error updating Order");
     //   }
-    // }, 
+    // },
   },
 };
 

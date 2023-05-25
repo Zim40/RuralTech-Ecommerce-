@@ -55,6 +55,7 @@ const typeDefs = gql`
     products: [OrderProduct]!
     user: ID!
     timestamps: String!
+    quantity: Int
   }
 
   type Auth {
@@ -62,10 +63,14 @@ const typeDefs = gql`
     user: User
   }
 
-  type ProductInfo {
-    count: Int
-    totalQuantity: Int
+  type statisticsInfo {
+    productCount: Int
+    totalProductQuantity: Int
+    orderCount: Int
+    totalOrderQuantity: Int
   }
+
+
 
  
 
@@ -86,13 +91,16 @@ const typeDefs = gql`
 
     allProducts: [Products]
     singleProduct(_id: ID!): Products
-    productInfo: ProductInfo
+    
     
     allCategory: [Category]
     singleCategory(_id: ID!): Category
 
     allOrders: [Order]
     singleOrder(_id: ID!): Order
+
+    statInfo: statisticsInfo
+    
 
     
   }

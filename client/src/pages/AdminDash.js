@@ -1,51 +1,64 @@
 import React from "react";
-import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
-import { PRODUCT_INFO } from '../utils/queries';
+import Button from 'react-bootstrap/Button';
+
+import DashboardList from "../components/DashboardList.js";
+import { STAT_INFO } from '../utils/queries';
 import { useQuery } from "@apollo/client";
 
 const styles = {
   button: {
     margin: 10,
-    // padding: 10
+    padding: 5,
     border: '1px solid',
     borderColor: 'black'
+  },
+  div: {
+    padding: 30,
+    margin: 30,
+    border: '1px solid',
+    borderRadius: 20
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 45
+  },
+  text: {
+    fontSize: 20,
+    width: '50%'
   }
 }
 const AdminDash = () => {
   // dashboard admin table
-//  const [productInfo, { error }] = useQuery(PRODUCT_INFO);
- 
+const { loading, data } = useQuery(STAT_INFO);
+
+
+const statInfo = data?.statInfo || [];
+
+
+console.log(statInfo)
 
 
   return (
     <div>
-      <div className="">
-        <p className="">
+      <div className="" style={styles.div}>
+        <h2 style={styles.title}>Dashboard</h2>
+        <p className="" style={styles.text}>
           From the dashboard you can control Product Management and alter
           specific items and categories, start by choosing an option below.
         </p>
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <DashboardList statInfo={statInfo} />
+        )}
+        <Button style={styles.button} variant="primary" size="lg" active>
+          Products
+        </Button>{" "}
+        <Button style={styles.button} variant="primary" size="lg" active>
+          Categories
+        </Button>{" "}
       </div>
-      <Row>
-        <Col xs={12} sm={12} md={4} > 
-          <ListGroup>
-            <ListGroup.Item>Total Stock: </ListGroup.Item>
-            <ListGroup.Item>Total Products: </ListGroup.Item>
-            <ListGroup.Item>Total Orders: PLACEHOLDER</ListGroup.Item>
-            <ListGroup.Item>Total Revenue: PLACEHOLDER</ListGroup.Item>
-            <ListGroup.Item>Last 30-Day Sales: </ListGroup.Item>
-          </ListGroup>
-        </Col>
-      </Row>
-      <Button style={styles.button} variant="primary" size="lg" active>
-        Products
-      </Button>{" "}
-      <Button style={styles.button} variant="primary" size="lg" active>
-        Categories
-      </Button>{" "}
     </div>
   ); 
 };
