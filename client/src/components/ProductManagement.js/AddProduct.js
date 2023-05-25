@@ -30,42 +30,42 @@ const AddProduct = () => {
           <h2>Add Product</h2>
         </div>
         <div className="w-50">
-          <Form.Label htmlFor="inputNewCategory">Product Name</Form.Label>
+          <Form.Label htmlFor="inputrProductName">Product Name</Form.Label>
           <Form.Control
             type="input"
-            id="inputCategory"
-            aria-describedby="inputCategory"
+            id="inputProductName"
+            aria-describedby="inputProductName"
           />
-          <Form.Text id="inputCategory" muted></Form.Text>
-          <Form.Label htmlFor="inputNewCategory">Description</Form.Label>
+          <Form.Text id="inputProductName" muted></Form.Text>
+          <Form.Label htmlFor="inputDescription">Description</Form.Label>
           <Form.Control
             type="input"
-            id="inputCategory"
-            aria-describedby="inputCategory"
+            id="inputDescription"
+            aria-describedby="inputDescription"
           />
-          <Form.Text id="inputCategory" muted></Form.Text>
-          <Form.Label htmlFor="inputNewCategory">Price</Form.Label>
+          <Form.Text id="inputProductPrice" muted></Form.Text>
+          <Form.Label htmlFor="inputProductPrice">Price</Form.Label>
           <Form.Control
             type="input"
-            id="inputCategory"
-            aria-describedby="inputCategory"
+            id="inputProductPrice"
+            aria-describedby="inputProductPrice"
           />
-          <Form.Text id="inputCategory" muted></Form.Text>
-          <Form.Label htmlFor="inputNewCategory">Image</Form.Label>
+          <Form.Text id="inputProductPrice" muted></Form.Text>
+          <Form.Label htmlFor="inputImage">Image</Form.Label>
           <Form.Control
             type="input"
-            id="inputCategory"
-            aria-describedby="inputCategory"
+            id="inputImage"
+            aria-describedby="inputImage"
           />
-          <Form.Text id="inputCategory" muted></Form.Text>
+          <Form.Text id="inputImage" muted></Form.Text>
          
-          <Form.Label htmlFor="inputNewCategory">Product Name</Form.Label>
+          <Form.Label htmlFor="inputQuantity">Quantity</Form.Label>
           <Form.Control
             type="input"
-            id="inputCategory"
-            aria-describedby="inputCategory"
+            id="inputQuantity"
+            aria-describedby="inputQuantity"
           />
-          <Form.Text id="inputCategory" muted></Form.Text>
+          <Form.Text id="inputQuantity" muted></Form.Text>
           <Form.Label htmlFor="inputNewCategory">Choose Category</Form.Label>
           <Form.Select
             //   style={styles.textArea}

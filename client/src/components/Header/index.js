@@ -7,6 +7,23 @@ import Button from 'react-bootstrap/Button';
 
 import Auth from '../../utils/auth';
 
+// inline Styling
+const styles = {
+    header: {
+      background: '#4A6670'
+    },
+    text: {
+      color: 'white'
+    },
+    brand: {
+      fontWeight: 'bold',
+      color: 'white',
+      fontSize: 35,
+      marginRight: 20
+    }
+}
+
+
 const Header = () => {
   const userRole = Auth.loggedIn() ? Auth.getProfile().data.role : null;
   console.log(userRole);
@@ -18,27 +35,27 @@ const Header = () => {
  
   
   return (
-    <Navbar bg="light" variant="light">
+    <Navbar style={styles.header} variant="light">
       <Container>
-        <Navbar.Brand as={Link} to="/">RuralTech</Navbar.Brand>
+        <Navbar.Brand style={styles.brand} as={Link} to="/">RuralTech</Navbar.Brand>
         
         <Nav className="me-auto">
-          <Nav.Link as={Link} to="/">Home</Nav.Link>
+          <Nav.Link style={styles.text} as={Link} to="/">Home</Nav.Link>
         </Nav>
         {/* Conditionally render "Admin" or "User" navbars */}
         {userRole === "ADMIN" && (
         <>
         <Nav className="me-auto">
-          <Nav.Link as={Link} to="/admin-dashboard">Dashboard</Nav.Link>
+          <Nav.Link style={styles.text}  as={Link} to="/admin-dashboard">Dashboard</Nav.Link>
         </Nav>
         <Nav className="me-auto">
-          <Nav.Link as={Link} to="/product-category-manager">Product/Category Manager</Nav.Link>
+          <Nav.Link style={styles.text}  as={Link} to="/product-category-manager">Product/Category Manager</Nav.Link>
         </Nav>
         <Nav className="me-auto">
-          <Nav.Link as={Link} to="/orders">Orders</Nav.Link>
+          <Nav.Link style={styles.text}  as={Link} to="/orders">Orders</Nav.Link>
         </Nav>
         <Nav className="me-auto">
-          <Nav.Link as={Link} to="/preview-website">Website Preview</Nav.Link>
+          <Nav.Link style={styles.text}  as={Link} to="/preview-website">Website Preview</Nav.Link>
         </Nav>
         </>
         )}
