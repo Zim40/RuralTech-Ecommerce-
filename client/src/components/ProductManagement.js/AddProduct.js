@@ -16,6 +16,7 @@ const AddProduct = () => {
       margin: 30,
       border: "1px solid",
       borderRadius: 20,
+      color: 'white'
     },
   };
 
@@ -50,14 +51,14 @@ const AddProduct = () => {
             id="inputProductPrice"
             aria-describedby="inputProductPrice"
           />
-          <Form.Text id="inputProductPrice" muted></Form.Text>
+          {/* <Form.Text id="inputProductPrice" muted></Form.Text>
           <Form.Label htmlFor="inputImage">Image</Form.Label>
           <Form.Control
             type="input"
             id="inputImage"
             aria-describedby="inputImage"
           />
-          <Form.Text id="inputImage" muted></Form.Text>
+          <Form.Text id="inputImage" muted></Form.Text> */}
          
           <Form.Label htmlFor="inputQuantity">Quantity</Form.Label>
           <Form.Control

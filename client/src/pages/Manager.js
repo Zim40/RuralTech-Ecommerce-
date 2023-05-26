@@ -15,6 +15,7 @@ const Manager = () => {
     buttonsGroup: {
       paddingTop: 30,
       margin: 0,
+      color: 'white',
       // borderRadius: '10px'
     },
     button: {
@@ -37,7 +38,8 @@ const Manager = () => {
     },
     text: {
       fontSize: 20,
-      width: '75%'
+      width: '75%',
+      color: 'white'
     }
   };
 

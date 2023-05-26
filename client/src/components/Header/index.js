@@ -10,10 +10,10 @@ import Auth from '../../utils/auth';
 // inline Styling
 const styles = {
     header: {
-      background: '#4A6670'
+      background: '#A0AF84'
     },
     text: {
-      color: 'white'
+      color: 'black'
     },
     brand: {
       fontWeight: 'bold',
