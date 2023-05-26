@@ -1,43 +1,40 @@
 import React from "react";
 
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 
 import DashboardList from "../components/DashboardList.js";
-import { STAT_INFO } from '../utils/queries';
+import { STAT_INFO } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
 const styles = {
   button: {
     margin: 10,
     padding: 5,
-    border: '1px solid',
-    borderColor: 'black'
+    border: "1px solid",
+    borderColor: "black",
   },
   div: {
     padding: 30,
     margin: 30,
-    border: '1px solid',
-    borderRadius: 20
+    border: "1px solid",
+    borderRadius: 20,
   },
   title: {
-    fontWeight: 'bold',
-    fontSize: 45
+    fontWeight: "bold",
+    fontSize: 45,
   },
   text: {
     fontSize: 20,
-    width: '50%'
-  }
-}
+    width: "50%",
+  },
+};
 const AdminDash = () => {
   // dashboard admin table
-const { loading, data } = useQuery(STAT_INFO);
+  const { loading, data } = useQuery(STAT_INFO);
 
+  const statInfo = data?.statInfo || [];
 
-const statInfo = data?.statInfo || [];
-
-
-console.log(statInfo)
-
+  console.log(statInfo);
 
   return (
     <div>
@@ -60,7 +57,7 @@ console.log(statInfo)
         </Button>{" "}
       </div>
     </div>
-  ); 
+  );
 };
 
 export default AdminDash;

@@ -37,8 +37,9 @@ const AddCategory = () => {
 
       setCategoryName("");
       setDescription("");
+      window.location.reload();
 
-      console.log('Success!')
+      console.log("Success!");
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +52,7 @@ const AddCategory = () => {
           <h2>Add Category</h2>
         </div>
         <div className="w-50  ">
-          <form onSubmit={handleFormSubmit} className="addCategoryForm" >
+          <form onSubmit={handleFormSubmit} className="addCategoryForm">
             <Form.Label htmlFor="inputNewCategory">Category Name</Form.Label>
             <Form.Control
               type="text"
@@ -75,17 +76,15 @@ const AddCategory = () => {
             <Form.Text id="categoryDescription" muted>
               Add a description for new category
             </Form.Text>
-            <Button
-             style={styles.button} variant="success"
-             type="submit">
+            <Button style={styles.button} variant="success" type="submit">
               Add Category
             </Button>{" "}
           </form>
           {error && (
-          <div className="col-12 my-3 bg-danger text-white p-3">
-            Something went wrong...
-          </div>
-        )}
+            <div className="col-12 my-3 bg-danger text-white p-3">
+              Something went wrong...
+            </div>
+          )}
         </div>
       </div>
     </>
