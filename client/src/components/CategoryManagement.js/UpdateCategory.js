@@ -76,7 +76,7 @@ const UpdateCategory = () => {
           <h2>Update Category</h2>
         </div>
         <div className="w-50">
-          <form onSubmit={handleFormSubmit} className="updateCategoryForm">
+          <form onSubmit={handleFormSubmit} className="form">
             <Form.Select
               style={styles.textArea}
               onChange={(event) => setCategoryId(event.target.value)}

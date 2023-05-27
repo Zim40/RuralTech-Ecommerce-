@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -26,104 +26,101 @@ export const ADD_USER = gql`
 
 export const ADD_PRODUCT = gql`
   mutation addProduct(
-  $productName: String!,
-   $description: String!,
-    $category: ID!,
-     $quantity: Int!,
-      $price: Float,
-       $image: String
-       ) {
-  addProduct(
-  productName: $productName,
-   description: $description,
-    category: $category,
-     quantity: $quantity,
-      price: $price,
-       image: $image
-       ) {
-    productName
-    description
-    price
-    image
-    category {
-      _id
+    $productName: String!
+    $description: String!
+    $category: ID!
+    $price: Float
+    $image: String
+    $quantity: Int
+  ) {
+    addProduct(
+      productName: $productName
+      description: $description
+      category: $category
+      price: $price
+      image: $image
+      quantity: $quantity
+    ) {
+      productName
+      description
+      price
+      image
+      category {
+        _id
+      }
+      quantity
     }
-    quantity
   }
-}
 `;
 
 export const DELETE_PRODUCT = gql`
   mutation deleteProduct($id: ID!) {
-  deleteProduct(_id: $id)
-}
+    deleteProduct(_id: $id)
+  }
 `;
-
-
-
 
 export const UPDATE_PRODUCT = gql`
   mutation updateProduct($id: ID!, $input: ProductInput) {
-  updateProduct(_id: $id, input: $input) {
-    _id
-    productName
-    description
-    price
-    image
-    category {
+    updateProduct(_id: $id, input: $input) {
       _id
+      productName
+      description
+      price
+      image
+      category {
+        _id
+      }
+      quantity
     }
-    quantity
   }
-}
 `;
 
 export const ADD_CATEGORY = gql`
   mutation AddCategory($categoryName: String!, $description: String) {
-  addCategory(categoryName: $categoryName, description: $description) {
-    _id
-    categoryName
-    description
-    quantity
+    addCategory(categoryName: $categoryName, description: $description) {
+      _id
+      categoryName
+      description
+      quantity
+    }
   }
-}
 `;
 
 export const DELETE_CATEGORY = gql`
   mutation deleteCategory($id: ID!) {
-  deleteCategory(_id: $id)
-}
+    deleteCategory(_id: $id)
+  }
 `;
 
 export const UPDATE_CATEGORY = gql`
   mutation updateCategory($id: ID!, $input: CategoryInput!) {
-  updateCategory(_id: $id, input: $input) {
-    _id
-    categoryName
-    description
-    quantity
+    updateCategory(_id: $id, input: $input) {
+      _id
+      categoryName
+      description
+      quantity
+    }
   }
-}
 `;
 
 export const ADD_ORDER = gql`
   mutation addOrder($input: AddOrderInput!) {
-  addOrder(input: $input) {
-    _id
-    products {
-      product
-      quantity
+    addOrder(input: $input) {
+      _id
+      products {
+        product
+        quantity
+      }
+      user
+      timestamps
     }
-    user
-    timestamps
   }
-}
 `;
 
 export const DELETE_ORDER = gql`
   mutation deleteOrder($id: ID!) {
-  deleteOrder(_id: $id)
-}
+    deleteOrder(_id: $id)
+  }
 `;
 
-// still need to create update order resolver. 
+// still need to create update order resolver.

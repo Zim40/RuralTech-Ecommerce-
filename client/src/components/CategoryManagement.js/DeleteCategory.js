@@ -62,7 +62,7 @@ const DeleteCategory = () => {
       </div>
       <div>
         <form
-          className="deleteForm"
+          className="form"
           type="form"
           name="deleteForm"
           onSubmit={handleFormSubmit}

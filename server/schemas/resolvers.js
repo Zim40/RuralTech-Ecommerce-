@@ -106,19 +106,24 @@ const resolvers = {
         if (product) {
           product.quantity += quantity;
         } else {
-          product = await Products.create({
-            productName,
-            description,
-            price,
-            image,
-            category,
-            quantity,
+           product = await Products.create({
+            
+              productName,
+              description,
+              price,
+              image,
+              category,
+              quantity,
+           
           });
+
+          await product.save();
+          return product;
         }
-        await product.save();
-        return product;
+        
       } catch (error) {
-        throw new Error("There has been an issue adding your product.");
+        
+        throw new Error("There has been an issue adding your product: " + error);
       }
     },
     deleteProduct: async (parent, { _id }) => {

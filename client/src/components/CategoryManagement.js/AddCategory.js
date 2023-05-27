@@ -52,7 +52,7 @@ const AddCategory = () => {
           <h2>Add Category</h2>
         </div>
         <div className="w-50  ">
-          <form onSubmit={handleFormSubmit} className="addCategoryForm">
+          <form onSubmit={handleFormSubmit} className="form">
             <Form.Label htmlFor="inputNewCategory">Category Name</Form.Label>
             <Form.Control
               type="text"
