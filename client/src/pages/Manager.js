@@ -31,6 +31,7 @@ const Manager = () => {
       border: "1px solid",
       borderRadius: 20,
       
+      
     },
     title: {
       fontWeight: "bold",
@@ -38,7 +39,7 @@ const Manager = () => {
     },
     text: {
       fontSize: 20,
-      width: '75%',
+      width: '100%',
       color: 'white'
     }
   };
@@ -51,7 +52,7 @@ const Manager = () => {
 
   return (
     <>
-      <div>
+      
         <div style={styles.div}>
           <div>
             <h2 style={styles.title}>Manager</h2>
@@ -139,7 +140,7 @@ const Manager = () => {
             )}
           </div>
         </div>
-      </div>
+      
     </>
   );
 };
