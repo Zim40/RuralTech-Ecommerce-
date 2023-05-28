@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { QUERY_ALLPRODUCTS } from "../../utils/queries";
+import { DELETE_PRODUCT } from "../../utils/mutations";
+import { useMutation, useQuery } from "@apollo/client";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -21,8 +24,37 @@ const styles = {
 };
 
 const DeleteProduct = () => {
-  const handleFormSubmit = async () => {
+  const { loading: loadingQuery, data: dataQuery } =
+    useQuery(QUERY_ALLPRODUCTS);
+  const allProducts = dataQuery?.allProducts || [];
+
+  const [deleteProduct, { error }] = useMutation(DELETE_PRODUCT);
+
+  const [productId, setProductId] = useState("");
+  const [availableProducts, setAvailableProducts] = useState([]);
+  const [successMessage, setSuccessMessage] = useState("");
+
+  useEffect(() => {
+    setAvailableProducts(allProducts);
+  }, [allProducts]);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
     try {
+      const { data } = await deleteProduct({
+        variables: {
+          id: productId,
+        },
+      });
+      setAvailableProducts((prevProducts) =>
+        prevProducts.filter((product) => product._id !== productId)
+      );
+      setSuccessMessage("Product deleted from the database!");
+
+      setTimeout(() => {
+        setProductId("");
+        setSuccessMessage("");
+      }, 3000);
     } catch (error) {
       throw new Error("Error handling form submit: " + error);
     }
@@ -49,30 +81,33 @@ const DeleteProduct = () => {
               //   className="w-50"
               aria-label="Default select example"
               name="productId"
-              //   value={}
-              //   onChange={}
+              value={productId}
+              onChange={(event) => setProductId(event.target.value)}
             >
-              <option>Choose a Category to update</option>
-              {/* {loadingQuery ? (
+              <option>Choose a Product to DELETE</option>
+              {loadingQuery ? (
                 <div>Loading...</div>
               ) : (
-                allCategory.map((categories) => (
-                  <option key={categories._id} value={categories._id}>
-                    {categories.categoryName}
+                availableProducts.map((product) => (
+                  <option key={product._id} value={product._id}>
+                    {product.productName}
                   </option>
                 ))
               )}
-              ; */}
+              ;
             </Form.Select>
             <Button style={styles.button} variant="danger" type="submit">
               DELETE Product
             </Button>{" "}
           </form>
-          {/* {error && (
+          {error && (
             <div className="col-12 my-3 bg-danger text-white p-3">
               Something went wrong...
             </div>
-          )} */}
+          )}
+          {successMessage && (
+            <div style={{ color: "black" }}>{successMessage}</div>
+          )}
         </div>
       </div>
     </>

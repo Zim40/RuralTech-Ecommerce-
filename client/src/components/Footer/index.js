@@ -14,7 +14,7 @@ const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <footer style={styles.footer} className="w-100 mt-auto  p-2 position-absolute bottom-0">
+    <footer style={styles.footer} className="w-100 mt-auto  p-2 position-absolute ">
       <Container className="container text-center mb-2">
         {location.pathname !== '/' && (
           <Button

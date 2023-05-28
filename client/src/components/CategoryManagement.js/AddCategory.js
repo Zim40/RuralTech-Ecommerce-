@@ -17,6 +17,9 @@ const AddCategory = () => {
       border: "1px solid",
       borderRadius: 20,
     },
+    text: {
+      color: 'black',
+    }
   };
 
   const [categoryName, setCategoryName] = useState("");
@@ -53,7 +56,7 @@ const AddCategory = () => {
         </div>
         <div className="w-50  ">
           <form onSubmit={handleFormSubmit} className="form">
-            <Form.Label htmlFor="inputNewCategory">Category Name</Form.Label>
+            <Form.Label htmlFor="inputNewCategory"></Form.Label>
             <Form.Control
               type="text"
               name="categoryName"
@@ -62,7 +65,7 @@ const AddCategory = () => {
               aria-describedby="inputCategory"
               onChange={(event) => setCategoryName(event.target.value)}
             />
-            <Form.Text id="inputCategory" muted>
+            <Form.Text style={styles.text} id="inputCategory" >
               Insert Category name
             </Form.Text>
             <Form.Control
@@ -73,7 +76,7 @@ const AddCategory = () => {
               aria-describedby="inputCategory"
               onChange={(event) => setDescription(event.target.value)}
             />
-            <Form.Text id="categoryDescription" muted>
+            <Form.Text id="categoryDescription" style={styles.text}>
               Add a description for new category
             </Form.Text>
             <Button style={styles.button} variant="success" type="submit">

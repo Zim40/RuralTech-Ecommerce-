@@ -51,7 +51,7 @@ const AddProduct = () => {
           quantity: formattedQuantity,
         },
       });
-      console.log(addProduct);
+      
       setSuccessMessage(
         `${productName}` + " successfully added to the database!"
       );

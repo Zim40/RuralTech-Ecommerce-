@@ -152,11 +152,11 @@ const resolvers = {
         );
 
         if (updatedProduct) {
-          updatedProduct.save();
+          await updatedProduct.save();
           return updatedProduct;
         } else {
           throw new Error("Product not found.");
-        }
+        };
       } catch (error) {
         throw new Error("Could not update Product");
       }
