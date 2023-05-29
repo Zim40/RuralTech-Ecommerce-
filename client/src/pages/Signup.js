@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../utils/mutations";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
+
+const styles = {
+  div: {
+    padding: 30,
+    margin: 30,
+    borderRadius: 20,
+  },
+  h3: {
+    fontWeight: 700,
+  },
+};
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    email: "",
+    password: "",
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
@@ -43,35 +54,52 @@ const Signup = () => {
 
   return (
     <>
-      {data ? (
-        <p>
-          Success! You may now head{' '}
-          <Link to="/">back to the homepage.</Link>
-        </p>
-      ) : (
-        <Form onSubmit={handleFormSubmit} className='my-3'>
-          <Form.Group className="mb-3" controlId="Username">
-            <Form.Label>Username</Form.Label>
-            <Form.Control type="text" placeholder="Enter Username" onChange={handleChange} value={formState.username} name='username' />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="Email">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" onChange={handleChange} value={formState.email} name='email' />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="Password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" onChange={handleChange} value={formState.password} name='password' />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-      )}
-      {error && (
-        <Alert variant='danger'>
-          {error.message}
-        </Alert>
-      )}
+      {" "}
+      <div style={styles.div}>
+        <h3 style={styles.h3}>Sign Up</h3>
+        {data ? (
+          <p>
+            Success! You may now head <Link to="/">back to the homepage.</Link>
+          </p>
+        ) : (
+          <Form onSubmit={handleFormSubmit} className="my-3">
+            <Form.Group className="mb-3" controlId="Username">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Username"
+                onChange={handleChange}
+                value={formState.username}
+                name="username"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="Email">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                onChange={handleChange}
+                value={formState.email}
+                name="email"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="Password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onChange={handleChange}
+                value={formState.password}
+                name="password"
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Form>
+        )}
+        {error && <Alert variant="danger">{error.message}</Alert>}
+      </div>
     </>
   );
 };

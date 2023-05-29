@@ -16,6 +16,7 @@ const AddCategory = () => {
       margin: 30,
       border: "1px solid",
       borderRadius: 20,
+      
     },
     text: {
       color: 'black',
@@ -50,8 +51,8 @@ const AddCategory = () => {
 
   return (
     <>
-      <div style={styles.div}>
-        <div>
+      <div className="activeForm" style={styles.div}>
+        <div >
           <h2>Add Category</h2>
         </div>
         <div className="w-50  ">

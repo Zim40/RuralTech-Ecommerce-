@@ -1,11 +1,25 @@
+
 body {
-    background: #4A6670; 
+    background:white; 
+    font-family: 'Roboto', sans-serif;
 }
 
 p {
-    color: white;
+    color: black;
+    
+    font-weight: 100;
 }
 
 h2 {
-    color: white;
+    color:black;
+}
+
+img {
+    padding: 0;
+    margin: 0;
+    object-fit: fill;
+}
+
+.activeForm {
+    background:#618F94
 }
