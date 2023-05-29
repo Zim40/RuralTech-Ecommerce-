@@ -19,11 +19,10 @@ const DashboardList = ({ statInfo }) => {
               Total Products: {statInfo.productCount}{" "}
             </ListGroup.Item>
             <ListGroup.Item>Total Orders: {statInfo.orderCount}</ListGroup.Item>
-            <ListGroup.Item>
+            {/* <ListGroup.Item>
               Total Orders to-date: {statInfo.totalOrderQuantity}
-            </ListGroup.Item>
-            <ListGroup.Item>Total Revenue: PLACEHOLDER</ListGroup.Item>
-            <ListGroup.Item>Last 30-Day Sales: </ListGroup.Item>
+            </ListGroup.Item> */}
+           
           </ListGroup>
         </Col>
       </Row>

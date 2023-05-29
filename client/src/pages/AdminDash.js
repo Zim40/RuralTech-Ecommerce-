@@ -3,6 +3,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 
 import DashboardList from "../components/DashboardList.js";
+import InventoryList from "../components/inventoryList/index.js";
 import { STAT_INFO } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 
@@ -49,12 +50,14 @@ const AdminDash = () => {
         ) : (
           <DashboardList statInfo={statInfo} />
         )}
+        <InventoryList />
         <Button style={styles.button} variant="primary" size="lg" active>
           Products
         </Button>{" "}
         <Button style={styles.button} variant="primary" size="lg" active>
           Categories
         </Button>{" "}
+        
       </div>
     </div>
   );

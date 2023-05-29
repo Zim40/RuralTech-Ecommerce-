@@ -73,7 +73,7 @@ function App() {
               />
               <Route
                 path="/admin-dashboard"
-                element={<AdminDash />}  
+                element={<AdminDash /> }  
               />
               <Route
                 path="/product-category-manager"
