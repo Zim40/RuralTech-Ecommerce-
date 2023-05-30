@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 import { QUERY_ALLCATEGORY } from "../../utils/queries";
 import { QUERY_ALLPRODUCTS } from "../../utils/queries";
 import { UPDATE_PRODUCT } from "../../utils/mutations";
@@ -19,6 +20,9 @@ const styles = {
     border: "1px solid",
     borderRadius: 20,
   },
+  textArea: {
+    paddingTop: 5
+  }
 };
 
 const UpdateProduct = () => {
@@ -92,9 +96,9 @@ const UpdateProduct = () => {
         </div>
         <div className="w-50">
           <Form onSubmit={handleFormSubmit} className="form">
-            <Form.Label htmlFor="inputrProductName">Product Name</Form.Label>
+          
             <Form.Select
-              style={styles.textArea}
+              
               //   className="w-50"
               aria-label="Default select example"
               name="productId"
@@ -113,42 +117,51 @@ const UpdateProduct = () => {
               )}
               ;
             </Form.Select>
-            <Form.Label htmlFor="inputrProductName">Product Name</Form.Label>
-            <Form.Control
-              type="input"
-              id="inputProductName"
-              aria-describedby="inputProductName"
-              name="productName"
-              onChange={(event) => setProductName(event.target.value)}
-              value={productName}
-            />
-            <Form.Text id="inputProductName" muted></Form.Text>
-            <Form.Label htmlFor="inputDescription">Description</Form.Label>
-            <Form.Control
-              type="input"
-              id="inputDescription"
-              aria-describedby="inputDescription"
-              onChange={(event) => setDescription(event.target.value)}
-              value={description}
-            />
-            <Form.Text id="inputProductPrice" muted></Form.Text>
-            <Form.Label htmlFor="inputProductPrice">Price</Form.Label>
-            <Form.Control
-              type="number"
-              id="inputProductPrice"
-              aria-describedby="inputProductPrice"
-              onChange={(event) => setPrice(event.target.value)}
-              value={price}
-            />
-            <Form.Label htmlFor="inputQuantity">Quantity</Form.Label>
-            <Form.Control
-              type="number"
-              id="inputQuantity"
-              aria-describedby="inputQuantity"
-              onChange={(event) => setQuantity(event.target.value)}
-              value={quantity}
-            />
-            <Form.Label htmlFor="inputNewCategory">Choose Category</Form.Label>
+            <InputGroup style={styles.textArea} className="mb-3 ">
+              <InputGroup.Text id="inputGroup-sizing-default">
+                Update Product Name:
+              </InputGroup.Text>
+              <Form.Control
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={(event) => setProductName(event.target.value)}
+                value={productName}
+              />
+            </InputGroup>
+            <InputGroup style={styles.textArea} className="mb-3 ">
+              <InputGroup.Text id="inputGroup-sizing-default">
+                Update Description:
+              </InputGroup.Text>
+              <Form.Control
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={(event) => setDescription(event.target.value)}
+                value={description}
+              />
+            </InputGroup>
+            <InputGroup style={styles.textArea} className="mb-3 ">
+              <InputGroup.Text id="inputGroup-sizing-default">
+                Update Price:
+              </InputGroup.Text>
+              <Form.Control
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={(event) => setPrice(event.target.value)}
+                value={price}
+              />
+            </InputGroup>
+            <InputGroup style={styles.textArea} className="mb-3 ">
+              <InputGroup.Text id="inputGroup-sizing-default">
+                Update Quantity:
+              </InputGroup.Text>
+              <Form.Control
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={(event) => setQuantity(event.target.value)}
+                value={quantity}
+              />
+            </InputGroup>
+          
             <Form.Select
               aria-label="Default select example"
               onChange={(event) => setCategory(event.target.value)}
@@ -176,7 +189,7 @@ const UpdateProduct = () => {
           </div>
         )}
         {successMessage && (
-          <div style={{ color: "black" }}>{successMessage}</div>
+          <div style={{ color: "black", fontWeight: 300, background: '#61ed6b', borderRadius: '5px', width: '25%', margin: '5px' }}>{successMessage}</div>
         )}
       </div>
     </>

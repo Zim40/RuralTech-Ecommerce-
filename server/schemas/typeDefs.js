@@ -116,7 +116,7 @@ const typeDefs = gql`
 
     addCategory(categoryName: String!, description: String): Category!
     deleteCategory(_id: ID!): Boolean
-    updateCategory(_id: ID!, input: CategoryInput!): Category
+    updateCategory(_id: ID!, input: CategoryInput): Category
 
     addOrder(input: AddOrderInput!): Order!
     deleteOrder(_id: ID!): Boolean

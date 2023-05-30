@@ -93,7 +93,7 @@ export const DELETE_CATEGORY = gql`
 `;
 
 export const UPDATE_CATEGORY = gql`
-  mutation updateCategory($id: ID!, $input: CategoryInput!) {
+  mutation updateCategory($id: ID!, $input: CategoryInput) {
     updateCategory(_id: $id, input: $input) {
       _id
       categoryName

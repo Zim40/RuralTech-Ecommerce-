@@ -38,8 +38,9 @@ const UpdateCategory = () => {
   const [categoryId, setCategoryId] = useState("");
   const [categoryName, setCategoryName] = useState("");
   const [description, setDescription] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState('');
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -55,11 +56,15 @@ const UpdateCategory = () => {
         },
       });
 
-      setCategoryId("");
-      setCategoryName("");
-      setDescription("");
-      setIsSubmitted(false);
+      
       console.log("Success!");
+      setTimeout(() => {
+        setCategoryId("");
+        setCategoryName("");
+        setDescription("");
+        setIsSubmitted(false);
+        setSuccessMessage("");
+      }, 3000);
     } catch (error) {
       console.log(error);
     }
@@ -131,6 +136,7 @@ const UpdateCategory = () => {
               Something went wrong...
             </div>
           )}
+          {successMessage && <div style={{ color: "black", fontWeight: '200', background: '#61ed6b', borderRadius: '5px', width: '25%', margin: '5px' }}>{successMessage}</div>}
         </div>
       </div>
     );

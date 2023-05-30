@@ -5,6 +5,7 @@ import { QUERY_ALLCATEGORY } from "../../utils/queries";
 import { ADD_PRODUCT } from "../../utils/mutations";
 import { useQuery } from "@apollo/client";
 import { useMutation } from "@apollo/client";
+import InputGroup from "react-bootstrap/InputGroup";
 
 const AddProduct = () => {
   const styles = {
@@ -85,42 +86,51 @@ const AddProduct = () => {
       </div>
       <div className="w-50">
         <form onSubmit={handleFormSubmit} className="form">
-          <Form.Label htmlFor="inputrProductName">Product Name</Form.Label>
-          <Form.Control
-            type="input"
-            id="inputProductName"
-            aria-describedby="inputProductName"
-            name="productName"
-            onChange={(event) => setProductName(event.target.value)}
-            value={productName}
-          />
-          <Form.Text id="inputProductName" muted></Form.Text>
-          <Form.Label htmlFor="inputDescription">Description</Form.Label>
-          <Form.Control
-            type="input"
-            id="inputDescription"
-            aria-describedby="inputDescription"
-            onChange={(event) => setDescription(event.target.value)}
-            value={description}
-          />
-          <Form.Text id="inputProductPrice" muted></Form.Text>
-          <Form.Label htmlFor="inputProductPrice">Price</Form.Label>
-          <Form.Control
-            type="number"
-            id="inputProductPrice"
-            aria-describedby="inputProductPrice"
-            onChange={(event) => setPrice(event.target.value)}
-            value={price}
-          />
-          <Form.Label htmlFor="inputQuantity">Quantity</Form.Label>
-          <Form.Control
-            type="number"
-            id="inputQuantity"
-            aria-describedby="inputQuantity"
-            onChange={(event) => setQuantity(event.target.value)}
-            value={quantity}
-          />
-          <Form.Label htmlFor="inputNewCategory">Choose Category</Form.Label>
+        <InputGroup style={styles.textArea} className="mb-3 ">
+              <InputGroup.Text id="inputGroup-sizing-default">
+                Product Name:
+              </InputGroup.Text>
+              <Form.Control
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={(event) => setProductName(event.target.value)}
+                value={productName}
+              />
+            </InputGroup>
+            <InputGroup style={styles.textArea} className="mb-3 ">
+              <InputGroup.Text id="inputGroup-sizing-default">
+                Description:
+              </InputGroup.Text>
+              <Form.Control
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={(event) => setDescription(event.target.value)}
+                value={description}
+              />
+            </InputGroup>
+            <InputGroup style={styles.textArea} className="mb-3 ">
+              <InputGroup.Text id="inputGroup-sizing-default">
+                Price: $
+              </InputGroup.Text>
+              <Form.Control
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={(event) => setPrice(event.target.value)}
+                value={price}
+              />
+            </InputGroup>
+            <InputGroup style={styles.textArea} className="mb-3 ">
+              <InputGroup.Text id="inputGroup-sizing-default">
+               Quantity:
+              </InputGroup.Text>
+              <Form.Control
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={(event) => setQuantity(event.target.value)}
+                value={quantity}
+              />
+            </InputGroup>
+      
           <Form.Select
             aria-label="Default select example"
             onChange={(event) => setCategory(event.target.value)}
@@ -147,7 +157,7 @@ const AddProduct = () => {
           Something went wrong...
         </div>
       )}
-      {successMessage && <div style={{ color: "black" }}>{successMessage}</div>}
+      {successMessage && <div style={{ color: "black", fontWeight: '200', background: '#61ed6b', borderRadius: '5px', width: '25%', margin: '5px' }}>{successMessage}</div>}
     </div>
   );
 };

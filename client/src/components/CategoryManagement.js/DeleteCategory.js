@@ -29,27 +29,29 @@ const DeleteCategory = () => {
   const allCategory = dataQuery?.allCategory || [];
 
   const [categoryId, setCategoryId] = useState("");
-  console.log(categoryId);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
       const { data } = await deleteCategory({
-        variables:{
-          id: categoryId
-        }
+        variables: {
+          id: categoryId,
+        },
       });
-      console.log(data)
-      setCategoryId('');
-      window.location.reload();
+      console.log(data);
+      setCategoryId("");
+      setTimeout(() => {
+        setCategoryId("");
+        setSuccessMessage("");
+      }, 3000);
 
       console.log("Success!");
     } catch (err) {
       console.log(err);
       throw new Error("Error handling form submit");
     }
-    
   };
 
   return (
@@ -92,10 +94,24 @@ const DeleteCategory = () => {
           </Button>{" "}
         </form>
         {error && (
-            <div className="col-12 my-3 bg-danger text-white p-3">
-              Something went wrong...
-            </div>
-          )}
+          <div className="col-12 my-3 bg-danger text-white p-3">
+            Something went wrong...
+          </div>
+        )}
+        {successMessage && (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "200",
+              background: "#61ed6b",
+              borderRadius: "5px",
+              width: "25%",
+              margin: "5px",
+            }}
+          >
+            {successMessage}
+          </div>
+        )}
       </div>
     </div>
   );

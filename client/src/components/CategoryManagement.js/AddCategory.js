@@ -102,7 +102,7 @@ const AddCategory = () => {
               Something went wrong...
             </div>
           )}
-          {successMessage && <div style={{ color: "black", fontWeight:300, background: 'green', fontSize: "16px", borderRadius: "5px", margin:5, padding: 5, width: "50%" }}>{successMessage}</div>}
+          {successMessage && <div style={{ color: "black", fontWeight: 300, background: '#61ed6b', borderRadius: '5px', width: '25%', margin: '5px' }}>{successMessage}</div>}
         </div>
       </div>
     </>

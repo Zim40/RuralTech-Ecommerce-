@@ -148,7 +148,7 @@ const resolvers = {
           _id,
           input,
           { new: true },
-          { runValidators: true }
+          
         );
 
         if (updatedProduct) {
@@ -203,7 +203,7 @@ const resolvers = {
           _id,
           input,
           { new: true },
-          { runValidators: true }
+          
         );
         if (updatedCategory) {
           updatedCategory.save();

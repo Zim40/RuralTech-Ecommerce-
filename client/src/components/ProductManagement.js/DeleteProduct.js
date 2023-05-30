@@ -106,7 +106,7 @@ const DeleteProduct = () => {
             </div>
           )}
           {successMessage && (
-            <div style={{ color: "black" }}>{successMessage}</div>
+            <div style={{ color: "black", fontWeight: 300, background: '#61ed6b', borderRadius: '5px', width: '25%', margin: '5px' }}>{successMessage}</div>
           )}
         </div>
       </div>
