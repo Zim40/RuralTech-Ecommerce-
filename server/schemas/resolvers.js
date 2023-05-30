@@ -17,7 +17,8 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
     allProducts: async () => {
-      const products = await Products.find();
+      const products = await Products.find().populate('category');
+      console.log(products);
       if (!products) {
         console.log(error);
       } else {

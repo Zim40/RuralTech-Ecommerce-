@@ -46,6 +46,10 @@ query Query {
     price
     image
     quantity
+    category {
+      _id
+      categoryName
+    }
   }
 }
 `;
