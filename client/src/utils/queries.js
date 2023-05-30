@@ -47,7 +47,6 @@ query Query {
     quantity
     category {
       _id
-      categoryName
     }
   }
 }
