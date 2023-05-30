@@ -18,7 +18,7 @@ const resolvers = {
     },
     allProducts: async () => {
       const products = await Products.find();
-      console.log(products);
+
       if (!products) {
         console.log(error);
       } else {
