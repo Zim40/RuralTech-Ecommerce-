@@ -86,7 +86,7 @@ const UpdateProduct = () => {
 
   return (
     <>
-      <div style={styles.div}>
+      <div className="activeForm" style={styles.div}>
         <div>
           <h2>Update Product</h2>
         </div>

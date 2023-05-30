@@ -49,7 +49,7 @@ function App() {
           <Header />
         
           
-          <div className="container  justify-content-center w-50" >
+          <div className="container  justify-content-center w-75" >
             <Routes>
               <Route 
                 path="/"

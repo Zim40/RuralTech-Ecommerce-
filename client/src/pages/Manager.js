@@ -28,7 +28,6 @@ const styles = {
     borderRadius: 20,
   },
   title: {
-    fontWeight: "bold",
     fontSize: 45,
   },
   text: {
@@ -48,7 +47,7 @@ const Manager = () => {
 
   return (
     <>
-      <div style={styles.div}>
+      <div className="activeForm" style={styles.div}>
         <div>
           <h2 style={styles.title}>Manager</h2>
         </div>

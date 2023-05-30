@@ -6,11 +6,11 @@ import { Navigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import { useQuery } from "@apollo/client";
 const styles = {
-    table: {
-        marginTop: 20,
-        padding:0,
-    }
-}
+  table: {
+    marginTop: 20,
+    padding: 0,
+  },
+};
 
 const InventoryList = () => {
   const { loading: loadingQuery, data: queryData } =
@@ -22,45 +22,41 @@ const InventoryList = () => {
 
   if (Auth.loggedIn()) {
     return (
-        
       <Table striped bordered hover variant="dark" style={styles.table}>
         <thead>
           <tr>
             <th>#</th>
             {loadingQuery ? (
-              <div>loading...</div>
+              <th>loading...</th>
             ) : (
-              allCategory.map((categories) => (
-                <th key={categories._id} value={categories._id}>
-                  {categories.categoryName}
-                </th>
+              allCategory.map((category) => (
+                <th key={category._id}>{category.categoryName}</th>
               ))
             )}
-            ;
           </tr>
         </thead>
         <tbody>
-        {loading ? (
-    <div>loading...</div>
-  ) : (
-    allProducts.map((product, index) => (
-      <tr key={product._id}>
-        <td>{index + 1}</td>
-        <td>{product.productName}<br></br>
-            {'$'+product.price}<br></br>
-            {'stock: '+product.quantity}<br></br>
-            </td>
-   
-        {allCategory.map((category) => (
-          <td key={category._id}>
-            {product.category && product.category._id === category._id
-              ? "✔️"
-              : ""}
-          </td>
-        ))}
-      </tr>
-    ))
-  )}
+          {loading ? (
+            <tr>
+              <td colSpan={allCategory.length + 1}>loading...</td>
+            </tr>
+          ) : (
+            allProducts.map((product, index) => (
+              <tr key={product._id}>
+                <td>{index + 1}</td>
+
+                {allCategory.map((category) => {
+                  return (
+                    <td key={category._id}>
+                      {product.category === category._id
+                        ? product.productName
+                        : ""}{product.productName}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))
+          )}
         </tbody>
       </Table>
     );

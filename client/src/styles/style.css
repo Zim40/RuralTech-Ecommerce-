@@ -1,17 +1,19 @@
 
 body {
-    background:white; 
-    font-family: 'Roboto', sans-serif;
+    background:#353740; 
+    /* font-family: 'Roboto', sans-serif; */
+    background-image: url('/public/background.png');
+    
 }
 
 p {
-    color: black;
-    
+    color:white;
+    font-size: 18px;
     font-weight: 100;
 }
 
 h2 {
-    color:black;
+    color:white;
 }
 
 img {
@@ -21,5 +23,5 @@ img {
 }
 
 .activeForm {
-    background:#618F94
+    background:#111112de;
 }

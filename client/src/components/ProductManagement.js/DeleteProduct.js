@@ -62,7 +62,7 @@ const DeleteProduct = () => {
 
   return (
     <>
-      <div style={styles.div}>
+      <div className="activeForm" style={styles.div}>
         <div>
           <h2>Delete Product</h2>
           <p>

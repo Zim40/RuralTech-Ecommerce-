@@ -14,7 +14,8 @@ const styles = {
     borderRadius: 20,
   },
   h3: {
-    fontWeight: 700
+    fontWeight: 700,
+    color: 'white'
   }
 };
 
@@ -57,9 +58,9 @@ const Login = (props) => {
     <>
       <div style={styles.div}>
         <h3 style={styles.h3}>Login</h3>
-        <Form onSubmit={handleFormSubmit} className="mb-3 ">
+        <Form onSubmit={handleFormSubmit} className="mb-3  ">
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+            <Form.Label style={{color: 'white'}}>Email address</Form.Label>
             <Form.Control
               type="email"
               placeholder="Enter email"
@@ -69,7 +70,7 @@ const Login = (props) => {
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label style={{color: 'white'}}>Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"

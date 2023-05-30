@@ -53,7 +53,7 @@ const DeleteCategory = () => {
   };
 
   return (
-    <div style={styles.div}>
+    <div className="activeForm" style={styles.div}>
       <div>
         <h2>Delete Category</h2>
         <p>
@@ -75,7 +75,7 @@ const DeleteCategory = () => {
             value={categoryId}
             onChange={(event) => setCategoryId(event.target.value)}
           >
-            <option>Choose a Category to update</option>
+            <option>Choose a Category to DELETE</option>
             {loadingQuery ? (
               <div>Loading...</div>
             ) : (

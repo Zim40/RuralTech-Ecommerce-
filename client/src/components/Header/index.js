@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
@@ -10,11 +10,11 @@ import Auth from "../../utils/auth";
 // inline Styling
 const styles = {
   header: {
-    background: "#52796F",
-    maxHeight: "150px",
+    background: "#353740",
+    maxHeight: "100px",
   },
   text: {
-    color: "black",
+    color: "white",
     fontWeight: 700,
   },
   // brand: {
@@ -26,16 +26,26 @@ const styles = {
 };
 
 const Header = () => {
+
   const userRole = Auth.loggedIn() ? Auth.getProfile().data.role : null;
   console.log(userRole);
+
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
+  
+
+
+
+ 
 
   return (
+    
     <Navbar style={styles.header} variant="light" className="d-flex flex-1">
+  
       <Container>
+     
         <Navbar.Brand style={styles.brand} >
           <img
             src="/Rural.png"
@@ -53,7 +63,7 @@ const Header = () => {
               </Nav.Link>
             </Nav>
             <Nav className="me-auto">
-              <Nav.Link style={styles.text} as={Link} to="/admin-dashboard">
+              <Nav.Link  style={styles.text} as={Link} to="/admin-dashboard">
                 Dashboard
               </Nav.Link>
             </Nav>

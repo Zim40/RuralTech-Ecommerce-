@@ -17,6 +17,7 @@ const styles = {
   },
   h3: {
     fontWeight: 700,
+    color: 'white'
   },
 };
 
@@ -64,7 +65,7 @@ const Signup = () => {
         ) : (
           <Form onSubmit={handleFormSubmit} className="my-3">
             <Form.Group className="mb-3" controlId="Username">
-              <Form.Label>Username</Form.Label>
+              <Form.Label style={{color: 'white'}}>Username</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter Username"
@@ -74,7 +75,7 @@ const Signup = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="Email">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label style={{color: 'white'}}>Email address</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Enter email"
@@ -84,7 +85,7 @@ const Signup = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="Password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label style={{color: 'white'}}>Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Password"

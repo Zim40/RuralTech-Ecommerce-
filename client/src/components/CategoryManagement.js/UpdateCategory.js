@@ -71,7 +71,7 @@ const UpdateCategory = () => {
 
   if (Auth.loggedIn()) {
     return (
-      <div style={styles.div}>
+      <div className="activeForm" style={styles.div}>
         <div>
           <h2>Update Category</h2>
         </div>

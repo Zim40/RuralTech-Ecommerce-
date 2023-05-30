@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Button from "react-bootstrap/Button";
 
@@ -21,25 +21,33 @@ const styles = {
     borderRadius: 20,
   },
   title: {
-    fontWeight: "bold",
     fontSize: 45,
   },
   text: {
-    fontSize: 20,
     width: "50%",
   },
 };
 const AdminDash = () => {
   // dashboard admin table
+
   const { loading, data } = useQuery(STAT_INFO);
 
   const statInfo = data?.statInfo || [];
 
-  console.log(statInfo);
+  const [showInventory, setShowInventory] = useState(false);
+
+  const toggleInventory = () => {
+    setShowInventory(!showInventory);
+  };
+  const [relaodCount, setReloadCount] = useState(0);
+
+  const handleReload = () => {
+    setReloadCount(relaodCount + 1);
+  };
 
   return (
     <div>
-      <div className="" style={styles.div}>
+      <div className="activeForm" style={styles.div}>
         <h2 style={styles.title}>Dashboard</h2>
         <p className="" style={styles.text}>
           From the dashboard you can control Product Management and alter
@@ -50,14 +58,16 @@ const AdminDash = () => {
         ) : (
           <DashboardList statInfo={statInfo} />
         )}
-        <InventoryList />
-        <Button style={styles.button} variant="primary" size="lg" active>
-          Products
+        <Button
+          onClick={toggleInventory}
+          style={styles.button}
+          variant="primary"
+          size="lg"
+          active
+        >
+          View Inventory
         </Button>{" "}
-        <Button style={styles.button} variant="primary" size="lg" active>
-          Categories
-        </Button>{" "}
-        
+        {showInventory && <InventoryList />}
       </div>
     </div>
   );

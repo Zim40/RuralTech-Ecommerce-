@@ -79,7 +79,7 @@ const AddProduct = () => {
   // quantity,
 
   return (
-    <div style={styles.div}>
+    <div className="activeForm" style={styles.div}>
       <div>
         <h2>Add Product</h2>
       </div>

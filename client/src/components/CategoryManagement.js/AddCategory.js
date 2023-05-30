@@ -3,11 +3,11 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { ADD_CATEGORY } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
+import InputGroup from "react-bootstrap/InputGroup";
 
 const AddCategory = () => {
   const styles = {
     button: {
-      float: "right",
       padding: 5,
       margin: 5,
     },
@@ -25,6 +25,7 @@ const AddCategory = () => {
 
   const [categoryName, setCategoryName] = useState("");
   const [description, setDescription] = useState("");
+ const [successMessage, setSuccessMessage] = useState("");
 
   const [addCategory, { error }] = useMutation(ADD_CATEGORY);
 
@@ -39,9 +40,19 @@ const AddCategory = () => {
         },
       });
 
-      setCategoryName("");
+         setSuccessMessage(
+        `${categoryName}` + " successfully added to the database!"
+      );
+      
+      setTimeout(() => {
+       setCategoryName("");
       setDescription("");
-      window.location.reload();
+      
+        setSuccessMessage("");
+      }, 3000);
+
+     
+      
 
       console.log("Success!");
     } catch (error) {
@@ -58,28 +69,30 @@ const AddCategory = () => {
         <div className="w-50  ">
           <form onSubmit={handleFormSubmit} className="form">
             <Form.Label htmlFor="inputNewCategory"></Form.Label>
-            <Form.Control
-              type="text"
-              name="categoryName"
-              value={categoryName}
-              id="inputCategory"
-              aria-describedby="inputCategory"
-              onChange={(event) => setCategoryName(event.target.value)}
-            />
-            <Form.Text style={styles.text} id="inputCategory" >
-              Insert Category name
-            </Form.Text>
-            <Form.Control
-              type="text"
-              name="description"
-              value={description}
-              id="inputCategory"
-              aria-describedby="inputCategory"
-              onChange={(event) => setDescription(event.target.value)}
-            />
-            <Form.Text id="categoryDescription" style={styles.text}>
-              Add a description for new category
-            </Form.Text>
+            <InputGroup style={styles.textArea} className="mb-3 ">
+              <InputGroup.Text id="inputGroup-sizing-default">
+               Category Name
+              </InputGroup.Text>
+              <Form.Control
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={(event) => setCategoryName(event.target.value)}
+                value={categoryName}
+              />
+            </InputGroup>
+            <InputGroup style={styles.textArea} className="mb-3 ">
+              <InputGroup.Text id="inputGroup-sizing-default">
+                Description
+              </InputGroup.Text>
+              <Form.Control
+                aria-label="Default"
+                aria-describedby="inputGroup-sizing-default"
+                onChange={(event) => setDescription(event.target.value)}
+                value={description}
+              />
+              
+              
+            </InputGroup>
             <Button style={styles.button} variant="success" type="submit">
               Add Category
             </Button>{" "}
@@ -89,6 +102,7 @@ const AddCategory = () => {
               Something went wrong...
             </div>
           )}
+          {successMessage && <div style={{ color: "black", fontWeight:300, background: 'green', fontSize: "16px", borderRadius: "5px", margin:5, padding: 5, width: "50%" }}>{successMessage}</div>}
         </div>
       </div>
     </>
