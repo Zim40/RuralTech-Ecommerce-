@@ -40,6 +40,7 @@ query StatInfo {
 export const QUERY_ALLPRODUCTS = gql`
 query Query {
   allProducts {
+    _id
     productName
     description
     price

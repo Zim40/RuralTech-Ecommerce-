@@ -33,7 +33,7 @@ const DeleteProduct = () => {
   const [productId, setProductId] = useState("");
   const [availableProducts, setAvailableProducts] = useState([]);
   const [successMessage, setSuccessMessage] = useState("");
-
+  console.log(productId)
   useEffect(() => {
     setAvailableProducts(allProducts);
   }, [allProducts]);

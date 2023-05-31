@@ -44,7 +44,7 @@ const UpdateProduct = () => {
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  // const [image, setImage] = useState("");
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -57,14 +57,14 @@ const UpdateProduct = () => {
         variables: {
           id: productId,
           input: {
-          productName,
-          description,
-          price: formattedPrice,
-          category: {
-            _id: category
+            productName,
+            description,
+            price: formattedPrice,
+            category: {
+              _id: category,
+            },
+            quantity: formattedQuantity,
           },
-          quantity: formattedQuantity,
-        }
         },
       });
       console.log(data);
@@ -75,6 +75,7 @@ const UpdateProduct = () => {
       // console.log(data);
 
       setTimeout(() => {
+        setProductId("")
         setProductName("");
         setDescription("");
         setCategory("");
@@ -97,13 +98,13 @@ const UpdateProduct = () => {
         <div className="w-50">
           <Form onSubmit={handleFormSubmit} className="form">
           
-            <Form.Select
-              
+            <Form.Select             
               //   className="w-50"
               aria-label="Default select example"
-              name="productId"
-              value={productId}
+              
+              
               onChange={(event) => setProductId(event.target.value)}
+              value={productId}
             >
               <option>Choose a Product to UPDATE</option>
               {loadingQuery ? (
@@ -112,6 +113,7 @@ const UpdateProduct = () => {
                 allProducts.map((product) => (
                   <option key={product._id} value={product._id}>
                     {product.productName}
+                    
                   </option>
                 ))
               )}
