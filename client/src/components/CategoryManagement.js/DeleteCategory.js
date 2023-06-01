@@ -40,6 +40,9 @@ const DeleteCategory = () => {
           id: categoryId,
         },
       });
+      setSuccessMessage(
+        " successfully deleted"
+      );
       console.log(data);
       setCategoryId("");
       setTimeout(() => {

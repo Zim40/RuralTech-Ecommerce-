@@ -55,6 +55,9 @@ const UpdateCategory = () => {
           },
         },
       });
+      setSuccessMessage(
+        `${categoryName}` + " successfully Updated!"
+      );
 
       
       console.log("Success!");
