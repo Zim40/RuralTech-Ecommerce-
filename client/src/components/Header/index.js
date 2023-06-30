@@ -26,7 +26,6 @@ const styles = {
 };
 
 const Header = () => {
-
   const userRole = Auth.loggedIn() ? Auth.getProfile().data.role : null;
   console.log(userRole);
 
@@ -34,86 +33,78 @@ const Header = () => {
     event.preventDefault();
     Auth.logout();
   };
-  
-
-
-
- 
 
   return (
-    
-    <Navbar style={styles.header} variant="light" className="d-flex flex-1">
-  
+    <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-     
-        <Navbar.Brand style={styles.brand} >
+        <Navbar.Brand id="logo" style={styles.brand}>
           <img
             src="/Rural.png"
             style={{ width: "auto", height: "300px", objectFit: "fill" }}
             alt="RuralTech logo"
           />
         </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-light" />
 
         {/* Conditionally render "Admin" or "User" navbars */}
         {userRole === "ADMIN" && (
           <>
-             <Nav className="me-auto">
-              <Nav.Link style={styles.text} as={Link} to="/">
-                Home
-              </Nav.Link>
-            </Nav>
-            <Nav className="me-auto">
-              <Nav.Link  style={styles.text} as={Link} to="/admin-dashboard">
-                Dashboard
-              </Nav.Link>
-            </Nav>
-            <Nav className="me-auto">
-              <Nav.Link
-                style={styles.text}
-                as={Link}
-                to="/product-category-manager"
-              >
-                Product/Category Manager
-              </Nav.Link>
-            </Nav>
-            <Nav className="me-auto">
-              <Nav.Link style={styles.text} as={Link} to="/orders">
-                Orders
-              </Nav.Link>
-            </Nav>
-            <Nav className="me-auto">
-              <Nav.Link style={styles.text} as={Link} to="/preview-website">
-                Website Preview
-              </Nav.Link>
-            </Nav>
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link style={styles.text} as={Link} to="/">
+                  Home
+                </Nav.Link>
+              </Nav>
+              <Nav className="me-auto">
+                <Nav.Link style={styles.text} as={Link} to="/admin-dashboard">
+                  Dashboard
+                </Nav.Link>
+              </Nav>
+              <Nav className="me-auto">
+                <Nav.Link
+                  style={styles.text}
+                  as={Link}
+                  to="/product-category-manager"
+                >
+                  Product/Category Manager
+                </Nav.Link>
+              </Nav>
+
+              <Nav className="me-auto">
+                <Nav.Link style={styles.text} as={Link}>
+                  <div>
+                    {Auth.loggedIn() ? (
+                      <>
+                        <Button className="m-2" onClick={logout}>
+                          Logout
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <Button
+                          as={Link}
+                          variant="primary"
+                          className="m-2"
+                          to="/login"
+                        >
+                          Login
+                        </Button>
+                        <Button
+                          as={Link}
+                          variant="secondary"
+                          className="m-2"
+                          to="/signup"
+                        >
+                          Signup
+                        </Button>
+                      </>
+                    )}
+                  </div>
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
           </>
         )}
-        <div>
-          {Auth.loggedIn() ? (
-            <>
-              <Button as={Link} variant="info" className="m-2" to="/me">
-                {Auth.getProfile().data.username}'s profile
-              </Button>
-              <Button className="m-2" onClick={logout}>
-                Logout
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button as={Link} variant="primary" className="m-2" to="/login">
-                Login
-              </Button>
-              <Button
-                as={Link}
-                variant="secondary"
-                className="m-2"
-                to="/signup"
-              >
-                Signup
-              </Button>
-            </>
-          )}
-        </div>
       </Container>
     </Navbar>
   );

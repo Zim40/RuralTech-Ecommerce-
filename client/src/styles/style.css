@@ -2,8 +2,17 @@
 body {
     background:#353740; 
     /* font-family: 'Roboto', sans-serif; */
-    background-image: url('/public/background.png');
+    /* background-image: url('/public/background.png');
+     */
+}
+@media screen and (max-width: 400px) {
+   #logo {
+    display: none;
+   };
+    #contentFrame{
+    width: 100vw!important;
     
+   };
 }
 
 p {
@@ -24,4 +33,5 @@ img {
 
 .activeForm {
     background:#111112de;
+   
 }

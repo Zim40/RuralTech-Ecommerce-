@@ -24,7 +24,7 @@ const styles = {
   div: {
     padding: 30,
     margin: 30,
-
+    
     borderRadius: 20,
   },
   title: {
