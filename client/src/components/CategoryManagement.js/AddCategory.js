@@ -41,8 +41,9 @@ const AddCategory = () => {
       });
 
          setSuccessMessage(
-        `${categoryName}` + " successfully added to the database!"
-      );
+          "✔"
+           );
+           
       
       setTimeout(() => {
        setCategoryName("");
@@ -102,7 +103,7 @@ const AddCategory = () => {
               Something went wrong...
             </div>
           )}
-          {successMessage && <div style={{ color: "black", fontWeight: 300, background: '#61ed6b', borderRadius: '5px', width: '25%', margin: '5px' }}>{successMessage}</div>}
+          {successMessage && <div >{successMessage}</div>}
         </div>
       </div>
     </>
