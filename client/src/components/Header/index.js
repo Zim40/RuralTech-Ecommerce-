@@ -35,6 +35,8 @@ const Header = () => {
   };
 
   return (
+     <>
+    {Auth.loggedIn() ? (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand id="logo" style={styles.brand}>
@@ -134,6 +136,27 @@ const Header = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    ) : (
+      <>
+      <Button
+        as={Link}
+        variant="primary"
+        className="m-2"
+        to="/login"
+      >
+        Login
+      </Button>
+      <Button
+        as={Link}
+        variant="secondary"
+        className="m-2"
+        to="/signup"
+      >
+        Signup
+      </Button>
+    </>
+    )}
+    </>
   );
 };
 
