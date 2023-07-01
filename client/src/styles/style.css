@@ -1,37 +1,45 @@
-
 body {
-    background:#353740; 
-    /* font-family: 'Roboto', sans-serif; */
-    /* background-image: url('/public/background.png');
+  background: #353740;
+  /* font-family: 'Roboto', sans-serif; */
+  /* background-image: url('/public/background.png');
      */
 }
 @media screen and (max-width: 400px) {
-   #logo {
+  #logo {
     display: none;
-   };
-    #contentFrame{
-    width: 100vw!important;
-    
-   };
+  }
+  #contentFrame {
+    width: 100vw !important;
+  }
+  .menuLogoutBtn {
+    visibility: visible;
+  }
+  .desktopLogoutBtn {
+    display: none;
+  }
 }
-
+#hamburgerMenu {
+    float: right;
+}
+.desktopLogoutBtn {
+  display: none;
+}
 p {
-    color:white;
-    font-size: 18px;
-    font-weight: 100;
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
 }
 
 h2 {
-    color:white;
+  color: white;
 }
 
 img {
-    padding: 0;
-    margin: 0;
-    object-fit: fill;
+  padding: 0;
+  margin: 0;
+  object-fit: fill;
 }
 
 .activeForm {
-    background:#111112de;
-   
+  background: #111112de;
 }

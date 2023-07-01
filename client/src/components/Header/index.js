@@ -44,12 +44,11 @@ const Header = () => {
             alt="RuralTech logo"
           />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-light" />
-
-        {/* Conditionally render "Admin" or "User" navbars */}
-        {userRole === "ADMIN" && (
-          <>
-            <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-light" id="hamburgerMenu"/>
+        <Navbar.Collapse id="basic-navbar-nav" >
+          {/* Conditionally render "Admin" or "User" navbars */}
+          {userRole === "ADMIN" && (
+            <>
               <Nav className="me-auto">
                 <Nav.Link style={styles.text} as={Link} to="/">
                   Home
@@ -69,42 +68,70 @@ const Header = () => {
                   Product/Category Manager
                 </Nav.Link>
               </Nav>
-
               <Nav className="me-auto">
                 <Nav.Link style={styles.text} as={Link}>
-                  <div>
-                    {Auth.loggedIn() ? (
-                      <>
-                        <Button className="m-2" onClick={logout}>
-                          Logout
-                        </Button>
-                      </>
-                    ) : (
-                      <>
-                        <Button
-                          as={Link}
-                          variant="primary"
-                          className="m-2"
-                          to="/login"
-                        >
-                          Login
-                        </Button>
-                        <Button
-                          as={Link}
-                          variant="secondary"
-                          className="m-2"
-                          to="/signup"
-                        >
-                          Signup
-                        </Button>
-                      </>
-                    )}
-                  </div>
+                  {Auth.loggedIn() ? (
+                    <Button className="m-2 menuLogoutBtn" onClick={logout}>
+                      logout
+                    </Button>
+                  ) : (
+                    <>
+                      <Button
+                        as={Link}
+                        variant="primary"
+                        className="m-2"
+                        to="/login"
+                      >
+                        Login
+                      </Button>
+                      <Button
+                        as={Link}
+                        variant="secondary"
+                        className="m-2"
+                        to="/signup"
+                      >
+                        Signup
+                      </Button>
+                    </>
+                  )}
                 </Nav.Link>
               </Nav>
-            </Navbar.Collapse>
-          </>
-        )}
+            </>
+          )}
+
+          <Nav className="me-auto desktopLogoutBtn">
+            <Nav.Link style={styles.text} as={Link}>
+              <div>
+                {Auth.loggedIn() ? (
+                  <>
+                    <Button className="m-2" onClick={logout}>
+                      Logout
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      as={Link}
+                      variant="primary"
+                      className="m-2"
+                      to="/login"
+                    >
+                      Login
+                    </Button>
+                    <Button
+                      as={Link}
+                      variant="secondary"
+                      className="m-2"
+                      to="/signup"
+                    >
+                      Signup
+                    </Button>
+                  </>
+                )}
+              </div>
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
